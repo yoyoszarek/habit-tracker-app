@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'screens/login_screen.dart';
+import 'screens/home_screen.dart';
 
-void main() => runApp(HabitTrackerApp());
+void main() {
+  runApp(HabitTrackerApp());
+}
 
 class HabitTrackerApp extends StatelessWidget {
   @override
@@ -12,7 +14,7 @@ class HabitTrackerApp extends StatelessWidget {
         primarySwatch: Colors.deepPurple,
         scaffoldBackgroundColor: Colors.grey[100],
       ),
-      home: LoginScreen(), // ✅ no MyHomePage here!
+      home: HomeScreen(),
       debugShowCheckedModeBanner: false,
     );
   }

@@ -1,35 +1,43 @@
 import 'package:flutter/material.dart';
 import '../models/habit.dart';
+import '../screens/calendar_screen.dart';
 
-class HabitTile extends StatefulWidget {
+class HabitTile extends StatelessWidget {
   final Habit habit;
+  final VoidCallback onToggle;
 
-  HabitTile({required this.habit});
-
-  @override
-  _HabitTileState createState() => _HabitTileState();
-}
-
-class _HabitTileState extends State<HabitTile> {
-  void _toggleToday() {
-    final today = DateTime.now();
-    setState(() {
-      widget.habit.toggleComplete(DateTime(today.year, today.month, today.day));
-    });
-  }
+  HabitTile({required this.habit, required this.onToggle});
 
   @override
   Widget build(BuildContext context) {
-    final today = DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day);
-    final isCompleted = widget.habit.completedDates.contains(today);
+    final today = DateTime.now();
+    final todayOnly = DateTime(today.year, today.month, today.day);
+    final isCompleted = habit.completedDates.any(
+      (d) => d.year == todayOnly.year && d.month == todayOnly.month && d.day == todayOnly.day,
+    );
 
     return ListTile(
-      leading: Text(widget.habit.icon, style: TextStyle(fontSize: 24)),
-      title: Text(widget.habit.title),
-      trailing: IconButton(
-        icon: Icon(isCompleted ? Icons.check_circle : Icons.circle_outlined,
-            color: isCompleted ? Colors.green : Colors.grey),
-        onPressed: _toggleToday,
+      leading: Text(habit.icon, style: TextStyle(fontSize: 24)),
+      title: Text(habit.title),
+      trailing: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          IconButton(
+            icon: Icon(Icons.calendar_today),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (_) => CalendarScreen(habit: habit),
+                ),
+              );
+            },
+          ),
+          IconButton(
+            icon: Icon(isCompleted ? Icons.check_circle : Icons.circle_outlined),
+            onPressed: onToggle,
+          ),
+        ],
       ),
     );
   }
