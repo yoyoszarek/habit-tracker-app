@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:habit/screens/create_account_screen.dart';
 import '../services/auth_service.dart';
 import 'home_screen.dart';
 
@@ -48,8 +49,23 @@ class _LoginScreenState extends State<LoginScreen> {
               TextField(controller: _passwordController, decoration: InputDecoration(labelText: 'Password'), obscureText: true),
               SizedBox(height: 20),
               _loading
-                  ? CircularProgressIndicator()
-                  : ElevatedButton(onPressed: _login, child: Text('Login')),
+    ? CircularProgressIndicator()
+    : Column(
+        children: [
+          ElevatedButton(onPressed: _login, child: Text('Login')),
+          SizedBox(height: 12),
+          TextButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => CreateAccountScreen()),
+              );
+            },
+            child: Text("Don't have an account? Create one"),
+          ),
+        ],
+      ),
+
             ],
           ),
         ),
