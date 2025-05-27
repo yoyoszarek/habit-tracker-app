@@ -1,16 +1,38 @@
-# habit
+# habit tracker app
 
-A new Flutter project.
+A new Flutter project to practice different items + folders.
 
-## Getting Started
+------------------------------------
+- Features & Structure
+Main Screen: Habit list with checkboxes, heatmap calendar, and floating action button.
 
-This project is a starting point for a Flutter application.
+Drawer: Toggle for light/dark mode (with SharedPreferences).
 
-A few resources to get you started if this is your first Flutter project:
+Habit Tiles: Slidable cards for edit/delete with completion toggle.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+Heatmap: Visualizes habit streaks using flutter_heatmap_calendar.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- Logic & Persistence
+HabitDatabase: CRUD operations with Isar DB; syncs UI via ChangeNotifier.
+
+AppSettings: Stores first app launch date.
+
+ThemeProvider: Manages app theming (light/dark).
+
+- Utilities
+SharedPreferences: Persist theme toggle & custom flags.
+
+Helper Functions: Check if habit completed today, prep heatmap data.
+
+- Tech Stack
+Flutter
+
+Isar for local database
+
+Provider for state management
+
+SharedPreferences
+
+flutter_slidable for swipe actions
+
+flutter_heatmap_calendar for visual stats
