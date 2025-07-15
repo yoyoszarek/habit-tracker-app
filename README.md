@@ -24,10 +24,15 @@ SharedPreferences: Persist theme toggle & custom flags.
 
 Helper Functions: Check if habit completed today, prep heatmap data.
 
-- Tech Stack
+- Tech Stack - 
 Flutter
+
 Isar for local database
+
 Provider for state management
+
 SharedPreferences
+
 flutter_slidable for swipe actions
+
 flutter_heatmap_calendar for visual stats
