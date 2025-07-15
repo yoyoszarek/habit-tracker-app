@@ -1,6 +1,6 @@
 # habit tracker app
 
-A new Flutter project to practice different items + folders.
+A school project that I re-worked using flutter and made some changes too.
 
 ------------------------------------
 - Features & Structure
