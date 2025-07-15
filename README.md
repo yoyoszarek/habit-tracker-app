@@ -24,7 +24,7 @@ SharedPreferences: Persist theme toggle & custom flags.
 
 Helper Functions: Check if habit completed today, prep heatmap data.
 
-#Tech Stack 
+# Tech Stack 
 
 Flutter
 
